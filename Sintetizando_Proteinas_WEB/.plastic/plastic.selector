@@ -1,0 +1,4 @@
+repository "Sintetizando_Proteinas_WEB@ThiagoGarcia@cloud"
+  path "/"
+    br "/main"
+    co "/main"
