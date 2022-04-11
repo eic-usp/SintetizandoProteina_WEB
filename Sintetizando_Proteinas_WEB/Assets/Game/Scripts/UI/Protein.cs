@@ -15,7 +15,8 @@ public class Protein : MonoBehaviour{
 
     static string path = "Assets/Game/Data/Proteinas.json"; 
 
-    [SerializeField] string proteinName; //Could use the name of the gameObject
+    [SerializeField] string proteinName; //Could use the name of the gameObject, used in json
+    [SerializeField] string synthesizedProteinName; //Diferent from the protein name
     private string proteinValue; //Could use ProteinDeclaration, but them everything would be public
 
     [System.Serializable]
@@ -36,9 +37,11 @@ public class Protein : MonoBehaviour{
     public static void Setup(VideoChoice vc){
         videoChoice = vc;
     }
+    
     public void OnClickSendVideo(){
         videoChoice.ChooseProtein(maxParent.GetSiblingIndex());
         RNASpawner.SetDNAString(proteinValue);
+        FindObjectOfType<PlayerInfo>().SetProteinName(synthesizedProteinName);
     }
 
     //Get all the protein

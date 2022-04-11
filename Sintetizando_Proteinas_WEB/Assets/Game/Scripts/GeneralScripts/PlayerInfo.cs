@@ -4,6 +4,7 @@ using System.Reflection;
 using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour{
+    private string actualProtein;
     private string namePlayer;
     private float maxScore;
     private float lastScore;
@@ -29,6 +30,18 @@ public class PlayerInfo : MonoBehaviour{
     public void SetNamePlayer(string namePlayer){
         this.namePlayer = namePlayer;
         print(this.namePlayer);
+    }
+
+    public void SetProteinName(string nameProtein){
+        actualProtein = nameProtein;
+    }
+
+    public string GetNamePlayer(){
+        return namePlayer;
+    }
+
+    public string GetActualProtein(){
+        return actualProtein;
     }
     
 }

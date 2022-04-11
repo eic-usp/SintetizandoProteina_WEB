@@ -11,7 +11,6 @@ using TMPro;
 //Colocar o Pooling
 public sealed class GameplayManager : MonoBehaviour{
     [SerializeField] List<Phase> gamePhases;
-    [SerializeField] GameObject phaseInstruction;
     
     [System.Serializable]
     private class Phase{
@@ -34,32 +33,41 @@ public sealed class GameplayManager : MonoBehaviour{
     [SerializeField] Marking marking; //Denotates which is the current phase
 
     private GameObject objRef = null;
-    [SerializeField] TextMeshProUGUI totalMessages;
+    [SerializeField] TextMeshProUGUI totalMessages; //Information in the display
     [SerializeField] TextMeshProUGUI actualMessage;
     [SerializeField] TextMeshProUGUI messageContent;
     private int actualMessageIndex;
 
-    //[SerializeField] List<GameObject> cardsPrefabs;
-    //[SerializeField] Transform cardContainer;
+    [SerializeField] GameObject waitManager; //Appear between phases, phaseInstruction basically
     private bool onAwait = false;
 
     private void Start(){
         //SetRandomCardPosition(); //Not used anymore
         SpawnAllGoals();
-        //marking.SpawnGoals(gamePhases.Count);
         IncreacePhase(); //actualPhase always just increace, so starting with -1 is correct
     }
 
     public void IncreacePhase(){
         actualPhase++;
-        DestroyAllInstantiated();
-
+        //DestroyAllInstantiated(); //I make the null treatment already
+        ManagerWait(); //This will make something that wait for the player interaction
+        WaitFor();
+    }
+        /*
         if(!gamePhases[actualPhase].manager.gameObject.activeSelf){
             objRef = Instantiate<GameObject>(phaseInstruction , this.transform); 
         }else{
             //Pooling
         }
-        WaitFor();
+        */
+    
+    private void ManagerWait(){
+        objRef = waitManager;
+        PoolObject(objRef);
+        PhaseDescription aux = gamePhases[actualPhase].pd;
+
+        objRef.GetComponent<MissionDisplay>().Setup(actualPhase, aux.namePhase, 
+            aux.descriptionPhase, aux.additionalInfo);
     }
 
     private void SpawnAllGoals(){
@@ -73,7 +81,9 @@ public sealed class GameplayManager : MonoBehaviour{
     public bool Check(int numberPhase){
         if(onAwait && numberPhase == actualPhase){
             DestroyAllInstantiated();
-            objRef = Instantiate<GameObject>(gamePhases[actualPhase].manager.gameObject , this.transform);
+            //objRef = Instantiate<GameObject>(gamePhases[actualPhase].manager.gameObject , this.transform);
+            objRef =  gamePhases[actualPhase].manager.gameObject;
+            PoolObject(objRef);
             RestartPhase();
             marking.ShowGoal(actualPhase);
             return true;
@@ -119,10 +129,17 @@ public sealed class GameplayManager : MonoBehaviour{
     }
 
     public void DestroyAllInstantiated(){
-        if(objRef == null){return;}
+        if(objRef == null){ return;}
 
         Destroy(objRef);
     }
+
+    private void PoolObject(GameObject pool){
+        if(pool == null && !pool.activeSelf) return;
+
+        pool.SetActive(true); //Will change to pool
+    }
+    
     
 }
 
