@@ -13,7 +13,7 @@ public class Protein : MonoBehaviour{
 
     private static VideoChoice videoChoice;
 
-    static string path = "Assets/Game/Data/Proteinas.json"; 
+    static string path = @"Assets/Game/Data/Proteinas.json"; 
 
     [SerializeField] string proteinName; //Could use the name of the gameObject, used in json
     [SerializeField] string synthesizedProteinName; //Diferent from the protein name

@@ -77,21 +77,25 @@ public static class Util{
 
     //Unity Events
 
-    public static void UnityEventInvokeAllListenersTheSame(UnityEvent m_MyEvent, object[] parameter, Type[] functionType){
+    public static void UnityEventInvokeAllListenersTheSame(UnityEvent m_MyEvent, object[] parameter, Type[] argumentType){
         int i;
 
         for(i = 0; i < m_MyEvent.GetPersistentEventCount(); i++){
-            UnityEventInvokeListenerByIndex(m_MyEvent, i, parameter, functionType);
+            UnityEventInvokeListenerByIndex(m_MyEvent, i, parameter, argumentType);
         } 
     }
 
-    public static void UnityEventInvokeListenerByIndex(UnityEvent m_myEvent, int eventIndex, object[] parameter, Type[] functionType){
+    public static void UnityEventInvokeListenerByIndex(UnityEvent m_myEvent, int eventIndex, object[] parameter, Type[] argumentType){
         object myObj;
-        MethodInfo another;
-        
+
         myObj = m_myEvent.GetPersistentTarget(eventIndex);
-        another = UnityEvent.GetValidMethodInfo(myObj, 
-            m_myEvent.GetPersistentMethodName(eventIndex), functionType);
+        MethodInfo another = UnityEventGetMethodInfo(m_myEvent, eventIndex, parameter, argumentType, myObj);
+        
         another.Invoke(myObj, parameter);
+    }
+
+    public static MethodInfo UnityEventGetMethodInfo(UnityEvent m_myEvent, int eventIndex, object[] parameter, Type[] argumentType, object obj){
+        return UnityEvent.GetValidMethodInfo(obj, 
+            m_myEvent.GetPersistentMethodName(eventIndex), argumentType);
     }
 }

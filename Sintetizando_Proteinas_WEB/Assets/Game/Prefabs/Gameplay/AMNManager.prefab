@@ -172,9 +172,116 @@ MonoBehaviour:
           - value: Arg
             nexts: []
     table: {fileID: 0}
+  - value:
+      value: G
+      nexts:
+      - value: U
+        nexts:
+        - value: U,C,A,G
+          nexts:
+          - value: Val
+            nexts: []
+      - value: C
+        nexts:
+        - value: U,C,A,G
+          nexts:
+          - value: Ala
+            nexts: []
+      - value: A
+        nexts:
+        - value: U,C
+          nexts:
+          - value: Asp
+            nexts: []
+        - value: A,G
+          nexts:
+          - value: Glu
+            nexts: []
+      - value: G
+        nexts:
+        - value: U,C,A,G
+          nexts:
+          - value: Gly
+            nexts: []
+    table: {fileID: 0}
+  - value:
+      value: U
+      nexts:
+      - value: U
+        nexts:
+        - value: U,C
+          nexts:
+          - value: Phe
+            nexts: []
+        - value: A,G
+          nexts:
+          - value: Leu
+            nexts: []
+      - value: C
+        nexts:
+        - value: U,C,A,G
+          nexts:
+          - value: Ser
+            nexts: []
+      - value: A
+        nexts:
+        - value: U,C
+          nexts:
+          - value: Tyr
+            nexts: []
+        - value: A,G
+          nexts:
+          - value: Fim
+            nexts: []
+      - value: G
+        nexts:
+        - value: U,C
+          nexts:
+          - value: Cys
+            nexts: []
+        - value: A
+          nexts:
+          - value: Fim
+            nexts: []
+        - value: G
+          nexts:
+          - value: Trp
+            nexts: []
+    table: {fileID: 0}
+  - value:
+      value: C
+      nexts:
+      - value: U
+        nexts:
+        - value: U,C,A,G
+          nexts:
+          - value: Leu
+            nexts: []
+      - value: C
+        nexts:
+        - value: U,C,A,G
+          nexts:
+          - value: Pro
+            nexts: []
+      - value: A
+        nexts:
+        - value: U,C
+          nexts:
+          - value: His
+            nexts: []
+        - value: A,G
+          nexts:
+          - value: Gln
+            nexts: []
+      - value: G
+        nexts:
+        - value: U,C,A,G
+          nexts:
+          - value: Arg
+            nexts: []
+    table: {fileID: 0}
   letterPrefab: {fileID: 5257269735387090396, guid: a1d271c0ebed66e43a3e9ce640e805cb, type: 3}
   letterSpawn: {fileID: 121792676}
-  numberOfAMN: 8
 --- !u!114 &5800494561997366135
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class AMNManager : InputPhase{
 
     private static int sizeAMN = 3;
 
-    private static string RNAtoAMN = "AAUACG"; //Sub product of the RNASpawner completion
+    private static string RNAtoAMN; //Sub product of the RNASpawner completion
     private string nameAMN; //Change in every input
     private int indexOfRNA = 0; //RNA control of the position
 

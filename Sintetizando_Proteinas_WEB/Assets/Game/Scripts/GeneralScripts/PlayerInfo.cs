@@ -1,22 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using UnityEngine;
-
-public class PlayerInfo : MonoBehaviour{
+public class PlayerInfo : GeneralGetter{
     private string actualProtein;
     private string namePlayer;
     private float maxScore;
     private float lastScore;
     private float actualScore;
 
+    public string something { get => GetActualProtein();} 
+
     //private float maxTime;
     //private float actualBestTime;
     public static PlayerInfo Instance { get; private set; }
 
-    public PlayerInfo(){
-
-    }
+    public PlayerInfo(){}
     private void Awake() { 
     // If there is an instance, and it's not me, delete myself.
     
@@ -43,5 +38,6 @@ public class PlayerInfo : MonoBehaviour{
     public string GetActualProtein(){
         return actualProtein;
     }
+
     
 }

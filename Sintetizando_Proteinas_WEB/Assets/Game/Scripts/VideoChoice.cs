@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
 
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
 public class VideoChoice : MonoBehaviour{
     [SerializeField] List<VideoClip> videoClips = new List<VideoClip>();
     [SerializeField] Transform screens;
@@ -12,11 +16,19 @@ public class VideoChoice : MonoBehaviour{
     private int actualVideoClip;
 
     //public RawImage rawImage;
+    private Task videoTask;
  
 
     private void Start(){
         Protein.Setup(this);
         videoPlayer = GetComponent<VideoPlayer>();
+
+        Action<object> action = (object obj) =>
+                                {
+                                   FinishCheck();
+                                };
+
+        videoTask = new Task(action, null);
     }
 
     public void ChooseProtein(int index){
@@ -27,14 +39,13 @@ public class VideoChoice : MonoBehaviour{
         PlayVideo();
     }
 
-    private IEnumerator FinishCheck(){
+    private async Task FinishCheck(){
         print("Entrou aqui");
         while(videoPlayer.isPlaying){
-            yield return null;
+            await Task.Yield();
         }
 
         ShowScreen();
-        yield return null;
     }
 
     private void ShowScreen(){
@@ -45,7 +56,7 @@ public class VideoChoice : MonoBehaviour{
     public void StopVideo(){
         if(!videoPlayer.isPlaying) return;
 
-        StopCoroutine(FinishCheck());
+        videoTask.Wait();
         videoPlayer.Stop();
     }
 
@@ -53,7 +64,7 @@ public class VideoChoice : MonoBehaviour{
         if(videoPlayer.isPlaying) return;
 
         videoPlayer.Play();
-        StartCoroutine(FinishCheck());
+        videoTask.Start();
     }
 
     public void SkipVideo(){

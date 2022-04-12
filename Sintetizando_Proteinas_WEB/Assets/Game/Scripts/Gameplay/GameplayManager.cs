@@ -53,19 +53,12 @@ public sealed class GameplayManager : MonoBehaviour{
         ManagerWait(); //This will make something that wait for the player interaction
         WaitFor();
     }
-        /*
-        if(!gamePhases[actualPhase].manager.gameObject.activeSelf){
-            objRef = Instantiate<GameObject>(phaseInstruction , this.transform); 
-        }else{
-            //Pooling
-        }
-        */
-    
+
     private void ManagerWait(){
         objRef = waitManager;
         PoolObject(objRef);
-        PhaseDescription aux = gamePhases[actualPhase].pd;
 
+        PhaseDescription aux = gamePhases[actualPhase].pd;
         objRef.GetComponent<MissionDisplay>().Setup(actualPhase, aux.namePhase, 
             aux.descriptionPhase, aux.additionalInfo);
     }
@@ -80,10 +73,12 @@ public sealed class GameplayManager : MonoBehaviour{
 
     public bool Check(int numberPhase){
         if(onAwait && numberPhase == actualPhase){
-            DestroyAllInstantiated();
+            PoolObject(objRef);
+            //DestroyAllInstantiated();
             //objRef = Instantiate<GameObject>(gamePhases[actualPhase].manager.gameObject , this.transform);
             objRef =  gamePhases[actualPhase].manager.gameObject;
             PoolObject(objRef);
+
             RestartPhase();
             marking.ShowGoal(actualPhase);
             return true;
@@ -135,9 +130,9 @@ public sealed class GameplayManager : MonoBehaviour{
     }
 
     private void PoolObject(GameObject pool){
-        if(pool == null && !pool.activeSelf) return;
+        if(pool == null) return;
 
-        pool.SetActive(true); //Will change to pool
+        pool.SetActive(!pool.activeSelf); //Will change to pool
     }
     
     
