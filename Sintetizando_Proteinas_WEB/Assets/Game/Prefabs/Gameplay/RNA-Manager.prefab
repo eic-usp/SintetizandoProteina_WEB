@@ -402,8 +402,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5980714351809495162}
-        m_TargetAssemblyTypeName: RNASpawner, Assembly-CSharp
-        m_MethodName: StartNewWaveDontDestroy
+        m_TargetAssemblyTypeName: PhasePart.RNA.RNASpawner, Assembly-CSharp
+        m_MethodName: StartNewWaveDNAString
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -501,13 +501,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4699306590276568932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68c85d6c5c80ba246a670107f4070d1e, type: 3}
+  m_Script: {fileID: 11500000, guid: a06659948f788b44983325dd61daa5e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 863831602246113298, guid: fe8069c0b0885d54092c65e91480e9de, type: 3}
-  defColor: {r: 1, g: 1, b: 0, a: 1}
-  whenRight: {r: 0, g: 1, b: 0, a: 1}
-  whenWrong: {r: 1, g: 0, b: 0, a: 1}
+  pd:
+    namePhase: 
+    descriptionPhase: 
+    additionalInfo: {fileID: 0}
+  prefab: {fileID: 0}
+  defColor: {r: 1, g: 1, b: 0, a: 0}
+  whenRight: {r: 0, g: 1, b: 0, a: 0}
+  whenWrong: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1 &5190569300551149162
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,9 +859,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6022869761404864721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5c223cda2eab84e860484ad3c530b3, type: 3}
+  m_Script: {fileID: 11500000, guid: b9a2b74e5c98abc4d92c87be5dcae20c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pd:
+    namePhase: 
+    descriptionPhase: 
+    additionalInfo: {fileID: 0}
 --- !u!114 &8655923135019724475
 MonoBehaviour:
   m_ObjectHideFlags: 0

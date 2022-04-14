@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using PhasePart.Bow;
+
+/*
+    Bow projectile for the minigame
+*/
+
 public class Arrow : MonoBehaviour{
     Rigidbody rb;
 

@@ -86,23 +86,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7295050311995265382}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cc6e95e1ecfcae40bda6181f3f87482, type: 3}
+  m_Script: {fileID: 11500000, guid: b137759dff0cf1646b40f22da16351e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamePhases:
-  - manager: {fileID: 7923208226454614147, guid: dbf61f0fbd5db934daf4d2a9f7394f03, type: 3}
-    messages:
-    - Apenas um teste
-    - Apenas um teste dois
-    - A - U ; T - A; C - G; G - C
-    instructions: {fileID: 0}
-  - manager: {fileID: 545324925275556228, guid: aa38f2fd4c37a384f8500e04b25c5d40, type: 3}
-    messages:
-    - Alguma coisa
-    instructions: {fileID: 0}
+  gamePhases: []
   marking: {fileID: 0}
   totalMessages: {fileID: 0}
   actualMessage: {fileID: 0}
   messageContent: {fileID: 0}
-  cardsPrefabs: []
-  cardInstruction: {fileID: 4917739990770874781, guid: ef6519b95ff82394db30b93ecf9945c3, type: 3}
+  waitManager: {fileID: 0}

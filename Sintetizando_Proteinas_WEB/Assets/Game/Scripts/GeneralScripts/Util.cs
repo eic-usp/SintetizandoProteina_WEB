@@ -94,6 +94,12 @@ public static class Util{
         another.Invoke(myObj, parameter);
     }
 
+    public static void UnityEventInvokeListenerByIndexObj(UnityEvent m_myEvent, int eventIndex, object[] parameter, Type[] argumentType, object obj){
+        MethodInfo another = UnityEventGetMethodInfo(m_myEvent, eventIndex, parameter, argumentType, obj);
+        
+        another.Invoke(obj, parameter);
+    }
+
     public static MethodInfo UnityEventGetMethodInfo(UnityEvent m_myEvent, int eventIndex, object[] parameter, Type[] argumentType, object obj){
         return UnityEvent.GetValidMethodInfo(obj, 
             m_myEvent.GetPersistentMethodName(eventIndex), argumentType);
